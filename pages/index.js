@@ -7,7 +7,9 @@ import AddButton from "../components/AddButton";
 import Featured from "../components/Featured";
 import PizzaList from "../components/PizzaList";
 import styles from "../public/styles/Home.module.css";
+import useSwr from 'swr'
 
+const fetcher = (url) => fetch(url).then((res) => res.json())
 
 export const getServerSideProps = async (ctx) => {
   const myCookie = ctx.req?.cookies || "";
@@ -17,18 +19,19 @@ export const getServerSideProps = async (ctx) => {
     admin = true;
   }
 
-  const res = await axios.get("http://localhost:3000/api/products");
+  
   return {
     props: {
-      pizzaList: res.data,
+      
       admin,
     },
   };
 };
 
-export default function Home({ pizzaList, admin}) {
+export default function Home({admin}) {
   const [close, setClose] = useState(true);
-  
+  const {data: pizzaList} = useSwr("/api/products", fetcher)
+  console.log(pizzaList);
   if(admin === true){
     return (
       <div className={styles.container}>
@@ -39,7 +42,7 @@ export default function Home({ pizzaList, admin}) {
         </Head>
         <Featured />
         {<AddButton setClose={setClose} />}
-        <PizzaList pizzaList={pizzaList} />
+        <PizzaList pizzaList={pizzaList || []} />
         {!close && <Add setClose={setClose} />}
       </div>
     );
@@ -53,7 +56,7 @@ export default function Home({ pizzaList, admin}) {
         </Head>
         <Featured />
        
-        <PizzaList pizzaList={pizzaList} />
+        <PizzaList pizzaList={pizzaList || []} />
         
       </div>
     );
