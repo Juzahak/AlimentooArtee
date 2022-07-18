@@ -16,8 +16,7 @@ const Navbar = () => {
     setData(data);
     return;
     
-  }
-  )
+  }, []);
 
 const pedidinho = `/orders/${data}`;
 
@@ -29,7 +28,7 @@ const pedidinho = `/orders/${data}`;
       return ( <Link href="/cart" passHref>
       <div className={styles.item}>
         <div className={styles.cart}>
-          <img src="/img/cestinha.png" alt="" width="70px" height="70px" />
+          <Image src="/img/cestinha.png" alt="" width="70px" height="70px" />
           <div className={styles.counter}>{quantity}</div>
         </div>
       </div>
@@ -40,7 +39,7 @@ const pedidinho = `/orders/${data}`;
      return ( <Link href="/cart" passHref>
       <div className={styles.item}>
         <div className={styles.cart}>
-          <img src="/img/cestavazia.png" alt="" width="70px" height="70px" />
+          <Image src="/img/cestavazia.png" alt="" width="70px" height="70px" />
           <div className={styles.counter}>{quantity}</div>
         </div>
       </div>

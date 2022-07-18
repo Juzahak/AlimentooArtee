@@ -74,7 +74,7 @@ const checked = () => {
                 <div className={styles.imgContainer}>
                   <Image
                     src={produto.img}
-                    
+                    alt="oi"
                     width="100%"
                     height="100%"
                   />
