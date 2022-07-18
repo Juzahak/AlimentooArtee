@@ -17,7 +17,7 @@ const Order = ({ order }) => {
   }
   
   useEffect(() => {
-    armazenar();
+    armazenar
   }, []);
   
   
