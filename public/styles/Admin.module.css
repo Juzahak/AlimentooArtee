@@ -1,0 +1,281 @@
+
+@media print{
+ 
+  .container{
+      visibility: hidden;
+      height: 0px;
+      box-shadow: 0px 0px;
+      margin: 0;
+      color: #000;
+      background-color: #fff;
+      display: none;
+  }
+  .item{
+    visibility: hidden;
+    box-shadow: 0px 0px;
+    height: 0px;
+    display: block;
+  }
+  .trTitle{
+    visibility: hidden;
+    box-shadow: 0px 0px;
+    height: 0px;
+    
+    display: block;
+  }
+  .tbTitle{
+    visibility: hidden;
+    box-shadow: 0px 0px;
+    height: 0px;
+    display: block;
+  }
+  .table{
+    visibility: hidden;
+    box-shadow: 0px 0px;
+    height: 0px;
+    
+    display: block;
+  }
+  .impressao{
+    display: block;
+  }
+}
+
+.container {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  background-color: whitesmoke;
+  background-image: url("../img/vetorial.png");
+  
+}
+
+.impressao2{
+  background: white;
+    border: none;
+}
+
+.item {
+  flex: 1;
+}
+
+.table {
+  width: 100%;
+  border-spacing: 0px 20px;
+  text-align: left;
+}
+
+.button {
+  
+  color: white;
+
+  cursor: pointer;
+}
+
+.statinho{
+  margin-top: 25px;
+}
+
+.proximo {
+  margin-bottom: 25px;
+  border: 1;
+  border-color: green;
+  font-size: 15px;
+  font-weight: 600;
+  color: #009f00;
+  width: 75px;
+  padding: 5px;
+  height: 50px;
+  background-color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.proximo3 {
+  border: 1;
+    border-color: GRAY;
+    font-size: 15px;
+    font-weight: 600;
+    color: GRAY;
+    width: 78px;
+    padding: 5px;
+    height: 97px;
+    background-color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.proximo2 {
+  margin-top: 20px;
+
+
+}
+
+.proximo:hover {
+  background-color: greenyellow;
+  color: white;
+  transition: all 0.5S ease;
+}
+.proximo3:hover {
+  background-color: lightgray;
+  color: white;
+  transition: all 0.5S ease;
+}
+
+.button:first-child {
+  background-color: teal;
+  margin-right: 10px;
+}
+
+.button2{
+border: 1;
+    border-color: darkblue;
+    font-size: 15px;
+    font-weight: 600;
+    color: darkblue;
+    width: 100px;
+    padding: 5px;
+    height: 35px;
+    background-color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.button2:hover {
+  background-color: blue;
+  color: white;
+  transition: all 0.5S ease;
+}
+
+.button:last-child {
+  border: 1;
+    border-color: red;
+    font-size: 15px;
+    font-weight: 600;
+    color: red;
+    width: 100px;
+    padding: 5px;
+    height: 35px;
+    background-color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.button:last-child:hover {
+  transition: all 0.5S ease;
+  
+  color: white;
+  padding: 5px;
+  width: 100px;
+  height: 35px;
+  background-color: red;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.break {
+  flex-basis: 100%;
+  height: 0;
+}
+
+.td2Title {
+
+  width: 430px;
+}
+
+.tdtTitle {
+  
+  width: 5%;
+}
+.tdt2Title {
+  
+margin-top:10px;
+}
+
+.trTitle {
+
+  font-weight: bold;
+  background: linear-gradient(45deg, white, transparent);
+  text-align: center;
+  box-shadow: 0px 0px 6px 2px black;
+}
+
+.alinhado {
+  display: flex;
+  justify-content: space-between;
+}
+
+.totalTitle {
+  width: 6%;
+}
+
+.metodoTitle {
+  width: 5%;
+}
+
+
+.divTitle {
+  margin-top: 30.5px;
+  margin-bottom: -11px;
+  background-color: black;
+  width: 100%;
+  height: 2px;
+}
+
+.div3Title {
+  margin-top: 29.5px;
+  margin-bottom: -11px;
+  background-color: black;
+  width: 100%;
+  height: 2px;
+}
+
+.spanTitle {
+  padding-top: 27px;
+
+  height: 81px;
+  text-align: left;
+  border: 1px solid black;
+}
+
+.span3Title {
+  padding-top: 27px;
+    align-items: center;
+    height: 81px;
+    
+    border: 1px solid black;
+}
+
+.span2Title {
+  
+  padding-top: 21px;
+  align-items: center;
+  height: 81px;
+  border: 1px solid black;
+}
+
+.produto {
+  width: 110px;
+}
+
+.div2Title {
+
+
+  background-color: black;
+  width: 100%;
+  height: 2px;
+}
+
+.div3Title {
+  margin-top: 29.5px;
+  margin-bottom: -11px;
+  background-color: black;
+  width: 100%;
+  height: 2px;
+}
+.title {
+  text-shadow: 2px 2px 15px black;
+  text-align: center;
+  font-weight: 900;
+}

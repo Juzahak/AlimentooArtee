@@ -1,0 +1,294 @@
+@media print{
+    .container{
+        visibility: hidden;
+        height: 0px;
+        display: fixed;
+    }
+    #notinhaPr{
+      display: fixed;
+        max-width: 500px;
+        max-height: 1122px;
+        visibility: visible;
+        position: absolute;
+        top: 0px;
+        left: -50px;
+        border: none;
+        font-size: 20px;
+        margin: 0 auto;
+
+        z-index: 9999;
+
+         background-color: #ffffff;
+    }
+    .flexx{
+        visibility: hidden;
+    }
+    .position {
+        display: flex;
+        justify-content: flex-start;
+        margin: 0px;
+    }
+    .position2 {
+        display: flex;
+        margin: 0px;
+        justify-content: center;
+    }
+    .image{
+      page-break-before: always;
+    }
+    
+}
+
+
+.position {
+    display: flex;
+    justify-content: flex-start;
+}
+.position2 {
+    display: flex;
+    justify-content: center;
+    font-size: 17px;
+    
+}
+.position25 {
+    display: flex;
+    justify-content: center;
+    font-size: 22px;
+    
+}
+.position3 {
+  width: 10px; 
+  height: 30px;
+}
+.position34 {
+  width: 10px; 
+  height: 1px;
+}
+.position4 {
+  display: flex;
+    justify-content: center;
+    font-size: 15px;
+}
+.mainAddButton {
+  padding: 10px;
+  margin: 20px;
+  background-color: white;
+  width: 70px;
+  border-radius: 10px;
+  color: firebrick;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid;
+  border-color: firebrick;
+    }
+    
+    .mainAddButton:hover {
+      background-color: rgb(196, 72, 72);
+    color: white;
+    transition: all 0.5S ease;
+    }
+  
+      .bebida {
+        text-align: center;
+        font-size: 25px;
+        margin-bottom: 15px;
+        margin-top: 15px;
+      }
+    
+      .extraButton{
+        background: white;
+        border-radius: 9px;
+      }
+    
+      .extraButton:hover{
+        background: rgb(100, 99, 99);
+        color: white;
+        transition: all 0.5S ease;
+      }
+
+      .inputinho {
+        width: 20px;
+        height: 20px;
+      }
+    
+    .container {
+        height: 100vh;
+        width: 90vw;
+        border-radius: 10px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        z-index: 999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row-reverse;
+        
+    }
+    .imprimirbutton{
+      display: flex;
+      position: relative;
+      left: 0;
+      top: 0;
+      margin: 0 auto;
+      margin-bottom: 50px;
+      width: 20%;
+      justify-content: center;
+      height: 45px;
+      border-radius: 10px;
+      align-items: center;
+      background-color: tan;
+      font-family: 'Quicken';
+      font-size: 22px;
+      cursor: pointer;
+  }
+    
+    .imprimirbutton:hover{
+      background-color: rgb(241, 223, 200);
+      transition: 0.5s all ease;
+    }
+    .notinha{
+        max-width: 220px;
+    
+    position: relative;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border: 2px solid black;
+   
+    }
+    .conts{
+      height: 500px;
+    overflow: hidden;
+    overflow-y: scroll;
+    }
+    .wrapper {
+      width: 90%;
+      height: 80%;
+    background-color: white;
+    padding: 10px 10px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    top: -10px;
+    background-image: url(/_next/static/media/vetorial.fdfb4581.png);
+    }
+    
+    .delete {
+      border-radius: 5px;
+      background: white;
+      border-color: red;
+      color: red;
+    }
+  
+    .delete:hover {
+      background: red;
+      color: white;
+      transition: all 0.5s ease;
+    }
+
+    .flexx {
+      display: flex;
+    justify-content: space-between;
+    }
+  
+    .close {
+      width: 50px;
+      height: 50px;
+      font-size: 27px;
+      background-color: black;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 999;
+      
+    }
+    
+.separador{
+  margin-bottom: 25px;
+    margin-top: 25px;
+}
+
+    .item {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+    }
+    
+    .label {
+      font-size: 15px;
+    font-weight: 700;
+    }
+    
+    .input {
+      border: none;
+      border-bottom: 1px solid gray;
+      outline: none;
+    }
+    
+    .priceContainer {
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .inputSm {
+      width: 25%;
+    }
+    
+    .extra {
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .extraItems {
+      margin: 10px 0px;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+    }
+    
+    .extraItem {
+      padding: 5px;
+      font-size: 14px;
+      border: 1px solid tomato;
+      background-color: white;
+      color: tomato;
+      margin-right: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    
+    .addButton {
+      width: 25%;
+      border: none;
+      background-color: teal;
+      color: white;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 5px 0;
+      align-self: flex-end;
+    }
+    
+    .tdTitle {
+      border: 2px solid black;
+      background: lavender;
+      text-align: center;
+    }
+    .divTitle {
+      height: 10px;
+      width: 100%;
+      text-align: center;
+    }
+    
+    .title{
+      font-size: 20px;
+    }
+    

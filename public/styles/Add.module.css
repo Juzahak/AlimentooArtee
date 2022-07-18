@@ -1,14 +1,36 @@
 .mainAddButton {
   padding: 10px;
   margin: 20px;
-  background-color: #d1411e;
+  background-color: #d1411e00;
+  border: 2px solid;
   width: 150px;
   border-radius: 10px;
-  color: white;
+  color: blue;
   font-weight: 500;
   text-align: center;
   cursor: pointer;
+  border-color: blue;
 }
+
+.mainAddButton:hover {
+  background-color: blue;
+  color: white;
+  transition: all 0.5s ease-in-out ;
+}
+
+  .bebida {
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+  }
+
+  
+
+  .inputinho {
+    width: 20px;
+    height: 20px;
+  }
 
 .container {
   width: 100vw;
@@ -20,10 +42,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
 
 .wrapper {
-  width: 500px;
+  width: 630px;
   background-color: white;
   padding: 10px 50px;
   border-radius: 20px;
@@ -55,9 +78,9 @@
 }
 
 .label {
-  margin-bottom: 5px;
-  font-size: 14px;
-  font-weight: 500;
+  margin-bottom: 30px;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 .input {
@@ -72,7 +95,7 @@
 }
 
 .inputSm {
-  width: 25%;
+  width: 40%;
 }
 
 .extra {
@@ -97,13 +120,31 @@
   cursor: pointer;
 }
 
+.extraButton{
+  background: white;
+    border-radius: 9px;
+}
+
+.extraButton:hover{
+  background: rgb(100, 99, 99);
+        color: white;
+        transition: all 0.5S ease;
+}
+
 .addButton {
   width: 25%;
-  border: none;
-  background-color: teal;
-  color: white;
-  font-weight: 500;
-  cursor: pointer;
-  padding: 5px 0;
-  align-self: flex-end;
+    background-color: teal;
+    border-color: teal;
+    color: white;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 5px 0;
+    align-self: flex-end;
+}
+
+.addButton:hover{
+  background-color: lightgreen;
+  border-color: lightgreen;
+  transition: all 0.5S ease;
 }

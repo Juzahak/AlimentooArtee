@@ -5,6 +5,14 @@
   justify-content: center;
 }
 
+.boxprint {
+  width: 189px;
+  height: 800px;
+ 
+  border: 2px solid;
+  
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;

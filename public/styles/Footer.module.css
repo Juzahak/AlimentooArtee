@@ -1,0 +1,97 @@
+@media print{
+  .container{
+    visibility: hidden;
+    height: 0px;
+    display: none;
+  }
+  .mapContainer{
+    visibility: hidden;
+    height: 0px;
+    display: none;
+  }
+}
+
+.container {
+  height: calc(110vh - 100px);
+  background: linear-gradient(#bbb19d, #dad2c1);
+    display: flex;
+}
+
+.mapContainer{
+  width: 50%;
+    height: 55%;
+    position: absolute;
+    bottom: 30px;
+    left: 70px;
+}
+
+.item {
+  flex: 1;
+  position: relative;
+  display: flex;
+}
+
+.item:last-child {
+  flex: 2;
+  padding: 50px;
+  justify-content: space-between;
+}
+
+.card {
+  flex: 1;
+  padding: 0 20px;
+}
+
+.title {
+  font-size: 18px;
+  color: #f9d993;
+}
+
+.text {
+  color: black;
+  font-size: 20px;
+  margin-top: 15px;
+}
+
+.motto {
+  color: #d1411e;
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    height: auto;
+    text-align: center;
+  }
+
+  .mapContainer{
+    width: 90%;
+    height: 330px;
+    bottom: -20px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .motto{
+    display: none;
+  }
+
+  .item:first-child {
+    display: none;
+  }
+
+  .item {
+    flex-direction: column;
+  }
+
+  .title {
+    font-size: 30px;
+    margin-top: 40px;
+  text-shadow: 1px 15px 15px grey;
+    color: #812121;  }
+
+  .text {
+    font-size: 20px;
+  }
+}

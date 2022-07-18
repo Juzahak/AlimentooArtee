@@ -12,29 +12,24 @@ const OrderSchema = new mongoose.Schema(
       required: true,
       maxlength: 200,
     },
-
-  
-    producto: {
+    obs: {
+      type: String,
+      maxlength: 200,
+    },
+    select: {
+      type: String,
+      required: true,
+    },
+    produto: {
       type: [],
       default: undefined,  
     },
-    quantidade: {
-      type: [],
-      default: undefined,  
-    },
-
-    extra1: {
-      type: [],
-      default: undefined,
-    },
-    extra2: {
-      type: [],
-      default: undefined,
-    },
-  
-    
   
     total: {
+      type: Number,
+      required: true,
+    },
+    price: {
       type: Number,
       required: true,
     },
@@ -46,7 +41,7 @@ const OrderSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
-    method: {
+    metodo: {
       type: Number,
       required:true
     },

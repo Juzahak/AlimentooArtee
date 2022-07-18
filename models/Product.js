@@ -16,6 +16,10 @@ const ProductSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    refri: {
+      type: Boolean,
+      required: true,
+    },
     prices: {
       type: [Number],
       required: true,

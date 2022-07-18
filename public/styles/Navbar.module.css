@@ -1,0 +1,176 @@
+@font-face {
+  font-family: 'Quicken';
+  src: url('../fonts/Quicken.ttf');
+}
+
+@media print{
+    
+  
+ 
+  .container{
+    height: 0px;
+    display: none;
+      visibility: hidden;
+      
+  }
+}
+
+.container {
+  height: 150px;
+  padding: 0px 50px;
+  background: linear-gradient(#bbb19d, #dad2c1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.logotipomob{
+  display: none;
+}
+
+.menumob{
+  display: flex;
+  width: 100%;
+}
+
+.titulomob{
+  display: none;
+}
+
+.menus{
+  font-family: 'Quicken';
+  font-size: 40px;
+  cursor: pointer;
+  color: #fff4f5;
+  text-shadow: 5px 4px 5px black;
+}
+.menus2{
+  font-family: 'Quicken';
+  font-size: 40px;
+  cursor: pointer;
+  color: #fff4f5;
+  text-shadow: 5px 4px 5px black;
+}
+
+.logotipo{
+  margin-left: 10px;
+    margin-right: 10px;
+}
+
+.item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.item:nth-child(2) {
+  flex: 2;
+}
+
+.item:last-child {
+  justify-content: flex-end;
+}
+
+
+.texts {
+  margin-left: 18px;
+  color: white;
+}
+
+.text:first-child {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.text:last-child {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "Aminetta";
+}
+
+.list {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  color: white;
+}
+
+.listItem {
+  margin: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: "Aminetta";
+}
+
+.cart{
+    position: relative;
+    cursor: pointer;
+}
+
+.counter{
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: white;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #d1411e;
+}
+
+@media screen and (max-width:480px) {
+ 
+  .item:nth-child(2) {
+    flex: 2 1;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .container{
+    height: 180px;
+    padding: 0px 30px
+  }
+  
+  .item:nth-child(1) {
+    display: none;
+  }
+  
+  .logotipo{
+    display: none;
+  }
+  .texts{display: none;}
+
+  .logotipomob{
+    position: absolute;
+    display: block;
+    top: 10px;
+    width: 65%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+  }
+
+  .menumob{
+    display: flex;
+    margin-top: 70px;
+    width: 100%;
+  }
+
+  .list{
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    width: 95%;
+  }
+  .menus2{
+    font-size: 50px;
+  }
+}

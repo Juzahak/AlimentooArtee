@@ -1,53 +1,74 @@
 import Image from "next/image";
-import styles from "../styles/Footer.module.css";
+import styles from "../public/styles/Footer.module.css";
+import Gmaps from "./Gmaps"
+
 
 const Footer = () => {
   return (
     <div className={styles.container}>
       <div className={styles.item}>
-        <Image src="/img/bg.png" objectFit="cover" layout="fill" alt="" />
+        <Image src="/img/foto4.jpg" objectFit="cover" layout="fill" alt="" />
       </div>
       <div className={styles.item}>
         <div className={styles.card}>
           <h2 className={styles.motto}>
-            OH YES, WE DID.THE LAMA PIZZA, WELL BAKED SLICE OF PIZZA.
+            Obrigado por visitar nosso menu,
+            <br />
+            <br />
+             Nossa alegria é te servir bem!
           </h2>
         </div>
         <div className={styles.card}>
-          <h1 className={styles.title}>FIND OUR RESTAURANTS</h1>
-          <p className={styles.text}>
-            1654 R. Don Road #304.
-            <br /> NewYork, 85022
-            <br /> (602) 867-1010
-          </p>
-          <p className={styles.text}>
-            2356 K. Laquie Rd #235.
-            <br /> NewYork, 85022
-            <br /> (602) 867-1011
-          </p>
-          <p className={styles.text}>
-            1614 E. Erwin St #104.
-            <br /> NewYork, 85022
-            <br /> (602) 867-1012
-          </p>
-          <p className={styles.text}>
-            1614 W. Caroll St #125.
-            <br /> NewYork, 85022
-            <br /> (602) 867-1013
-          </p>
+          <h1 className={styles.title}>LOCAL DO RESTAURANTE</h1>
+          <div className={styles.text}>
+           
+            Rua Sete de Setembro 228, 
+            <br /> Serra Negra - SP,
+            <br /> 13930-000 
+            <br /> (XX) XXXXX-XXXX
+          </div>
+         
+        </div>
+        
+        <div>
+        <Gmaps />
+
         </div>
         <div className={styles.card}>
-          <h1 className={styles.title}>WORKING HOURS</h1>
-          <p className={styles.text}>
-            MONDAY UNTIL FRIDAY
-            <br /> 9:00 – 22:00
-          </p>
-          <p className={styles.text}>
-            SATURDAY - SUNDAY
-            <br /> 12:00 – 24:00
-          </p>
+          <h1 className={styles.title}>ABERTO ÁS:</h1>
+          <div className={styles.text}>
+          Segunda: 12:00 às 15:00
+            
+          </div>
+          <div className={styles.text}>
+          Terça: 12:00 às 15:00         
+          </div>
+          <div className={styles.text}>
+          Quarta: 12:00 às 15:00
+            
+          </div>
+          <div className={styles.text}>
+          Quinta: 11:00 às 15:00
+          </div>
+          <div className={styles.text}>
+          Sexta: 12:00 às 15:00
+          <br />17:00 às 23:00
+            
+          </div>
+          <div className={styles.text}>
+          Sábado: 12:00 às 15:00
+          <br />  17:00 às 23:00
+            
+          </div>
+          <div className={styles.text}>
+          Domingo: 12:00 às 15:00
+          <br />   17:00 às 23:00
+            
+          </div>
+          
         </div>
       </div>
+      
     </div>
   );
 };

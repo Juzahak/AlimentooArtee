@@ -6,7 +6,8 @@ import Add from "../components/Add";
 import AddButton from "../components/AddButton";
 import Featured from "../components/Featured";
 import PizzaList from "../components/PizzaList";
-import styles from "../styles/Home.module.css";
+import styles from "../public/styles/Home.module.css";
+
 
 export const getServerSideProps = async (ctx) => {
   const myCookie = ctx.req?.cookies || "";

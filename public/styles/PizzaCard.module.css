@@ -1,0 +1,67 @@
+@font-face {
+  font-family: 'Quicken';
+  src: url('../fonts/Quicken.ttf');
+}
+
+.container {
+  width: 22%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 40px;
+  cursor: pointer;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #812121;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #666;
+}
+
+.desc {
+  text-align: center;
+  color: #777;
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    width: 100%;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-bottom: 22px;
+    box-shadow: 0px 0px 7px black;
+    border-radius: 10px;
+}
+  .imagefood{
+    width: 100px;
+    height: 100px;
+  }
+
+  .title {
+    font-size: 20px;
+    text-align: center;
+    width: 155px;
+    font-family: 'Quicken';
+  }
+
+  .price
+   {
+    font-size: 20px;
+    width: 90px;
+    text-align: center;
+  }
+
+  .desc{
+    display: none;
+  }
+}

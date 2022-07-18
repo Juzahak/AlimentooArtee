@@ -1,0 +1,84 @@
+@font-face {
+    font-family: 'Quicken';
+    src: url('../fonts/Quicken.ttf');
+  }
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 20px 40px;
+    cursor: pointer;
+    align-items: flex-end;
+    justify-content: space-evenly;
+   
+
+  }
+  
+  .titulomob{
+    display: none;
+  }
+
+  .imgg{
+    margin-bottom: 25px;
+    border-radius: 10px;
+  }
+
+  .titext{
+    margin-top: 15px;
+  }
+  .title {
+    font-family: 'Quicken';
+    font-size: 70px;
+    font-weight: bold;
+    color: #fc3434;
+    margin-left: 20px;
+    position: relative;
+    bottom: 20px;
+  }
+  
+  .price {
+    font-size: 30px;
+    margin-left: 40px;
+    font-weight: bold;
+    color: rgb(82, 82, 82);
+    position: relative;
+    bottom: 20px;
+  }
+  
+  .desc {
+    text-align: center;
+    font-size: 35px;
+    font-family: 'Quicken';
+  }
+  
+  @media screen and (max-width: 480px) {
+    .container {
+      width: 100%;
+      flex-direction: column;
+    }
+  
+    .title {
+      font-size: 30px;
+    }
+  
+    .price,
+    .desc {
+      font-size: 24px;
+      
+    } 
+
+    .price{
+      margin-left: 100px;
+    }
+    .titulomob{
+      text-align: center;
+    margin: 90px 10px 131px 10px;
+    font-family: 'Quicken';
+    font-size: 50px;
+    text-shadow: 1px 15px 15px grey;
+    color: #812121;
+    display: block;
+    }
+  }
+  

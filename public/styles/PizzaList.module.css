@@ -1,8 +1,23 @@
+@font-face {
+  font-family: 'Quicken';
+  src: url('../fonts/Quicken.ttf');
+}
+
+.realcontainer{
+  background-image: url("../img/vetorial.png");
+}
+
 .container {
   padding: 20px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
+ 
+}
+
+.title{
+  font-family: 'Quicken';
+  font-size: 45px;
 }
 
 .desc {

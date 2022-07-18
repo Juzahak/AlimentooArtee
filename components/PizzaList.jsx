@@ -1,25 +1,35 @@
-import styles from "../styles/PizzaList.module.css";
+import styles from "../public/styles/PizzaList.module.css";
 import PizzaCard from "./PizzaCard"
+import Pratododia from "./Pratododia"
 
-const PizzaList = ({pizzaList}) => {
-  return ( 
-    <div>
-    <div className={styles.container}>
-      <h1 className={styles.title}>PRATOS DA CASA</h1>
-      <div className={styles.wrapper}>
-        {pizzaList.map((pizza) => (
-          <PizzaCard key={pizza._id} pizza={pizza}/>
-        ))}   
+const PizzaList = ({ pizzaList }) => {
+
+  
+
+  return (
+    <div className={styles.realcontainer}>
+      <div className={styles.container}>
+        <div className={styles.wrapper}>
+          {pizzaList.map((pizza) => (
+            pizza.refri == false ?
+              <Pratododia key={pizza._id} pizza={pizza} />
+              :
+              <span key={pizza._id}></span>
+          ))}
+        </div>
       </div>
-    </div>
-    <div className={styles.container}>
-      <h1 className={styles.title}>BEBIDAS</h1>
-      <div className={styles.wrapper}>
-        {pizzaList.map((pizza) => (
-          <PizzaCard key={pizza._id} pizza={pizza}/>
-          ))} 
+      <div className={styles.container}>
+        <h1 className={styles.title}>BEBIDAS</h1>
+        <div className={styles.wrapper}>
+          {pizzaList.map((pizza) => (
+
+            pizza.refri == true ?
+              <PizzaCard key={pizza._id} pizza={pizza} />
+              :
+              <span key={pizza._id}></span>
+          ))}
+        </div>
       </div>
-    </div>
     </div>
   );
 };

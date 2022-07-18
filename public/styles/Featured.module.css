@@ -1,8 +1,10 @@
 .container {
-  height: calc(100vh - 100px);
-  background-color: #767676;
+  height: calc(100vh - 150px);
+  background-color: white;
   overflow: hidden;
   position: relative;
+  background-image: url("../img/vetorial.png");
+
 }
 
 .arrowContainer {
@@ -23,6 +25,7 @@
   transition: all 1.5s ease-in-out ;
 }
 
+
 .imgContainer {
   width: 100vw;
   height: 100%;
@@ -31,6 +34,12 @@
 
 @media screen and (max-width: 480px) {
   .container{
-    height: 50vh;
+    height: 30vh;
   }
+
+  .wrapper{
+    height: 104%;
+
+  }
+  
 }

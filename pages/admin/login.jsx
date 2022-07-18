@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import styles from "../../styles/Login.module.css";
+import styles from "../../public/styles/Login.module.css";
 
 const Login = () => {
   const [username, setUsername] = useState(null);
@@ -24,22 +24,22 @@ const Login = () => {
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        <h1>Admin Dashboard</h1>
+        <h1>Administrador</h1>
         <input
-          placeholder="username"
+          placeholder="Usuário"
           className={styles.input}
           onChange={(e) => setUsername(e.target.value)}
         />
         <input
-          placeholder="password"
+          placeholder="Senha"
           type="password"
           className={styles.input}
           onChange={(e) => setPassword(e.target.value)}
         />
         <button onClick={handleClick} className={styles.button}>
-          Sign In
+          Entrar!
         </button>
-        {error && <span className={styles.error}>Wrong Credentials!</span>}
+        {error && <span className={styles.error}>Usuário ou senha incorretos!</span>}
       </div>
     </div>
   );

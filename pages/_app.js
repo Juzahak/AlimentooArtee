@@ -1,7 +1,7 @@
 import Layout from '../components/Layout'
 import store from '../redux/store'
 import {Provider} from 'react-redux'
-import '../styles/globals.css'
+import '../public/styles/globals.css'
 
 
 

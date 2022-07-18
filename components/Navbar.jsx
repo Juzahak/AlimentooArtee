@@ -1,16 +1,65 @@
 import Image from "next/image";
-import styles from "../styles/Navbar.module.css";
+import styles from "../public/styles/Navbar.module.css";
 import {useSelector} from "react-redux";
+import {useState, useEffect} from "react";
 import Link from "next/link";
 
+
+
 const Navbar = () => {
-  
+  const [data, setData] = useState();
   const quantity = useSelector((state) => state.cart.quantity);
+  
+  useEffect(() => {
+    let data = JSON.parse(localStorage.getItem("produto"));
+    
+    setData(data);
+    return;
+    
+  }
+  )
+
+const pedidinho = `/orders/${data}`;
+
+
+
+  const teste = () => {
+    if(quantity > 0) {
+      
+      return ( <Link href="/cart" passHref>
+      <div className={styles.item}>
+        <div className={styles.cart}>
+          <img src="/img/cestinha.png" alt="" width="70px" height="70px" />
+          <div className={styles.counter}>{quantity}</div>
+        </div>
+      </div>
+      </Link>
+      )
+    }
+    if(quantity == 0 ) {
+     return ( <Link href="/cart" passHref>
+      <div className={styles.item}>
+        <div className={styles.cart}>
+          <img src="/img/cestavazia.png" alt="" width="70px" height="70px" />
+          <div className={styles.counter}>{quantity}</div>
+        </div>
+      </div>
+      </Link>
+   ) }
+  }
+  
+ 
     return (
-        <div className={styles.container}>
+      <div className={styles.container}>
+        <div className={styles.logotipomob}>
+            
+            <Image src="/img/ALimentoeArtelogo.png" alt="" width="600px" height="170px"/>
+            </div>
+            
+            <div className={styles.menumob}>
       <div className={styles.item}>
         <div className={styles.callButton}>
-          <Image src="/img/telephone.png" alt="" width="32" height="32" />
+          <Image src="/img/logow.png" alt="" width="55" height="55" />
         </div>
         <div className={styles.texts}>
           <div className={styles.text}>WhatssApp</div>
@@ -18,28 +67,26 @@ const Navbar = () => {
         </div>
       </div>
       <div className={styles.item}>
+            
         <ul className={styles.list}>
           <Link href="/" passHref >
-          <li className={styles.listItem}>Homepage</li>
+          <div className={styles.menus2}>Menu</div>
           </Link>
           
           <div className={styles.logotipo}>
             
-          <Image src="/img/ALimentoeArtelogo.png" alt="" width="400px" height="100px"/>
+          <Image src="/img/ALimentoeArtelogo.png" alt="" width="600px" height="170px"/>
           </div>
-          <li className={styles.listItem}>Contato</li>
+          <Link href={pedidinho} passHref >
+            
+          <div className={styles.menus} >Pedido</div>    
+          </Link>
         </ul>
       </div>
-      <Link href="/cart" passHref>
-      <div className={styles.item}>
-        <div className={styles.cart}>
-          <Image src="/img/cart.png" alt="" width="30px" height="30px" />
-          <div className={styles.counter}>{quantity}</div>
-        </div>
+      {teste()}
       </div>
-      </Link>
     </div>
     )
-}
-
+  }
+  
 export default Navbar
