@@ -1,14 +1,18 @@
 import styles from "../../public/styles/Product.module.css";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from 'axios';
 import {useDispatch} from 'react-redux';
 import {addProduct} from '../../redux/cartSlice';
 import Link from "next/link";
+import useSwr from 'swr'
 
+const fetcher = (url) => fetch(url).then((res) => res.json())
 
-const Product = ( {pizza}) => {
-  const [price, setPrice] = useState(pizza.prices[0]);
+const Product = ( {productId}) => {
+  const {data: pizza} = useSwr(`/api/products/${productId}`, fetcher)
+  console.log(pizza);
+  const [price, setPrice] = useState(0);
   const [size, setSize] = useState(0);
   const [qtd, setQtd] = useState(1);
   const [qtd2, setQtd2] = useState(1);
@@ -16,14 +20,18 @@ const Product = ( {pizza}) => {
   const [extras, setExtras] = useState([]);
   const [extras2, setExtras2] = useState([]);
   const dispatch = useDispatch();
-  
-
+  useEffect(() => {
+    if(!pizza) return;
+    setPrice(pizza.prices[0]);
+  }, [pizza]);
 
   const changePrice = (number) => {
     setPrice(price + number);
   };
 
   const handleSize = (sizeIndex) => {
+    if(!pizza) return;
+
     const difference = pizza.prices[sizeIndex] - pizza.prices[size];
     setSize(sizeIndex);
     changePrice(difference);
@@ -128,21 +136,21 @@ const Product = ( {pizza}) => {
     <div className={styles.container}>
       <div className={styles.left}>
         <div className={styles.imgContainer}>
-          <Image src={pizza.img} objectFit="contain" layout="fill" alt="" />
+          {pizza && <Image src={pizza.img} objectFit="contain" layout="fill" alt="" />}
         </div>
       </div>
       <div className={styles.right}>
-        <h1 className={styles.title}>{pizza.title}</h1>
+        <h1 className={styles.title}>{pizza?.title}</h1>
         <span className={styles.price}>R$ {price}.00</span>
-        <p className={styles.desc}>{pizza.desc}</p>
-        {pizza.refri && (
+        <p className={styles.desc}>{pizza?.desc}</p>
+        {pizza?.refri && (
           <>
           <div className={styles.position}>
           <div className={styles.margem}>
         <h3 className={styles.choose}>Adicione</h3>
         <div className={styles.ingredients} name='form1'>
           
-            {pizza.extraOptions.map((option) => (
+            {pizza?.extraOptions.map((option) => (
               <div className={styles.option} key={option._id}>
                 <input
               type="checkbox"
@@ -161,7 +169,7 @@ const Product = ( {pizza}) => {
           </>
         )}
 
-        {!pizza.refri && (
+        {!pizza?.refri && (
           
       <>
        
@@ -185,7 +193,7 @@ const Product = ( {pizza}) => {
         <h3 className={styles.choose}>Pratos (Escolha 2)</h3>
         <div className={styles.ingredients} name='form1'>
           
-            {pizza.extraOptions.map((option) => (
+            {pizza?.extraOptions.map((option) => (
               <div className={styles.option} key={option._id}>
                 <input
               type="checkbox"
@@ -204,7 +212,7 @@ const Product = ( {pizza}) => {
         <h3 className={styles.choose}>Acompanhamentos (Escolha 4)</h3>
         <div className={styles.ingredients}>
           
-            {pizza.extraOptions2.map((option) => (
+            {pizza?.extraOptions2.map((option) => (
               <div className={styles.option} key={option._id}>
                 <input
               type="checkbox"
@@ -236,10 +244,10 @@ const Product = ( {pizza}) => {
 };
 
 export const getServerSideProps = async ({params}) => {
-  const res = await axios.get(`http://localhost:3000/api/products/${params.id}`)
+
   return {
     props: {
-      pizza: res.data
+      productId: params.id
     },
   };
 }; 
