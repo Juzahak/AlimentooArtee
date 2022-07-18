@@ -1,7 +1,6 @@
 {
   "name": "alimento-e-arte",
   "version": "0.1.0",
-  "homepage": "AlimentoArte/",
   "private": true,
   "scripts": {
     "dev": "next dev",

@@ -26,7 +26,7 @@ const Index = ({ orders, products }) => {
   const status = ["Preparando", "A Caminho!", "Entregue!"];
  
 
- 
+    console.log(orders);
 
  
   
