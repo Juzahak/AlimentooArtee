@@ -29,6 +29,7 @@ const Cart = () => {
       if (res.status === 201) {
         dispatch(reset());
         router.push(`/orders/${res.data._id}`);
+        localStorage.setItem("produto", JSON.stringify(res.data._id));
       }
     }catch(err){
       console.log(err);

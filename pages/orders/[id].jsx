@@ -14,17 +14,11 @@ const Order = ({ orderId }) => {
 
   const status = order?.status;
  
+  
 
   const router = useRouter();
  
-  const armazenar = () => {
-    localStorage.removeItem("produto");
-    localStorage.setItem("produto", JSON.stringify(order?._id));
-  }
   
-  useEffect(() => {
-    armazenar();
-  });
   
   
  
