@@ -10,11 +10,15 @@ import Editar from "../../components/Editar";
 import Print from "../../components/Print";
 import Printss from "../../components/Printss";
 import PizzaList from "../../components/PizzaList";
+import useSwr from 'swr'
+
+const fetcher = (url) => fetch(url).then((res) => res.json())
 
 
 
-
-const Index = ({ orders, products }) => {
+const Index = ({ orderId, productId }) => {
+  const {data: orders} = useSwr(`/api/orders/`, fetcher)
+  const {data: products} = useSwr(`/api/products/`, fetcher)
   const [pizzaList, setPizzaList] = useState(products);
   const [orderList, setOrderList] = useState(orders);
   const [close, setClose] = useState(true);
@@ -33,7 +37,7 @@ const Index = ({ orders, products }) => {
   const getServerSide = async (ctx) => {
   
   
-    const orderRes = await axios.get("http://localhost:3000/api/orders");
+    const orderRes = await axios.get("/api/orders");
     var pedidos = orderRes.data;
     
     
@@ -54,7 +58,7 @@ const Index = ({ orders, products }) => {
     console.log(id);
     try {
       const res = await axios.delete(
-        "http://localhost:3000/api/products/" + id
+        "/api/products/" + id
       );
       setPizzaList(pizzaList.filter((pizza) => pizza._id !== id));
     } catch (err) {
@@ -67,7 +71,7 @@ const Index = ({ orders, products }) => {
     const currentStatus = item.status;
 
     try {
-      const res = await axios.put("http://localhost:3000/api/orders/" + id, {
+      const res = await axios.put("/api/orders/" + id, {
         status: currentStatus + 1,
       });
       setOrderList([
@@ -105,7 +109,7 @@ const Index = ({ orders, products }) => {
             </tr>
           </tbody>
 
-          {orderList.map((order, Index) => (
+          {orderList?.map((order, Index) => (
             order.status == 3 ?
               <tfoot key={Index}></tfoot>
 
@@ -116,14 +120,14 @@ const Index = ({ orders, products }) => {
               <tbody key={Index} className={styles.tbTitle}>
 
                 <tr className={styles.trTitle}>
-                  <td className={styles.tdtTitle}>{order.customer},
-                    <div className={styles.tdt2Title}>{order.select}</div>
+                  <td className={styles.tdtTitle}>{order?.customer},
+                    <div className={styles.tdt2Title}>{order?.select}</div>
                   </td>
                   <td className={styles.tdTitle}>
-                    {order.produto.map((sla, Index) =>
+                    {order?.produto.map((sla, Index) =>
                       <div key={Index}>
-                        <div className={styles.spanTitle}>{sla.title}
-                        {sla.size == 1 && (
+                        <div className={styles.spanTitle}>{sla?.title}
+                        {sla?.size == 1 && (
 
                           <div className={styles.name}>COM SALADA!</div>
                         )}
@@ -136,12 +140,12 @@ const Index = ({ orders, products }) => {
                   </td>
 
                   <td className={styles.td2Title}>
-                    {order.produto.map((sla, Index) =>
+                    {order?.produto.map((sla, Index) =>
                       <div className={styles.span3Title} key={Index}>
-                        {sla.extras.map((sla2, Index) =>
+                        {sla?.extras.map((sla2, Index) =>
                           <span key={Index}>{sla2}, </span>
                         )}
-                        {sla.refri && '*************'}
+                        {sla?.refri && '*************'}
 
                       </div>
                     )}
@@ -150,12 +154,12 @@ const Index = ({ orders, products }) => {
                   </td>
 
                   <td className={styles.td2Title}>
-                    {order.produto.map((sla, Index) =>
+                    {order?.produto.map((sla, Index) =>
                       <div className={styles.span2Title} key={Index}>
-                        {sla.extras2.map((sla2, Index) =>
+                        {sla?.extras2.map((sla2, Index) =>
                           <span key={Index}>{sla2}, </span>
                         )}
-                        {sla.refri && '*************'}
+                        {sla?.refri && '*************'}
 
                       </div>
                     )}
@@ -164,18 +168,18 @@ const Index = ({ orders, products }) => {
 
 
 
-                  <td className={styles.totalTitle}>R${order.total + order.price}.00</td>
+                  <td className={styles.totalTitle}>R${order?.total + order?.price}.00</td>
                   <td className={styles.metodoTitle}>
-                    {order.metodo === 0 ? <span>--Dinheiro-- ({order.troco}R$)</span> : <span>--Cartão--</span>}
+                    {order?.metodo === 0 ? <span>--Dinheiro-- ({order?.troco}R$)</span> : <span>--Cartão--</span>}
                   </td>
                   <td className={styles.tdTitle}>
-                    <div className={styles.statinho}>{status[order.status]}</div>
-                    <button className={styles.proximo} onClick={() => handleStatus(order._id)}>
+                    <div className={styles.statinho}>{status[order?.status]}</div>
+                    <button className={styles.proximo} onClick={() => handleStatus(order?._id)}>
                       Próximo Passo
                     </button>
                   </td>
                   <td className={styles.tdTitle}>
-                  <button onClick={() => setIde(order._id)} className={styles.impressao2}>
+                  <button onClick={() => setIde(order?._id)} className={styles.impressao2}>
                 {<Print setClose3={setClose3} />}
 
                   {!close3 && <Printss className={styles.impressao} setClose3={setClose3} order={orderList} orderId={Ide}/>}
@@ -200,31 +204,31 @@ const Index = ({ orders, products }) => {
               <th>EXCLUIR</th>
             </tr>
           </tbody>
-          {pizzaList.map((product, Index) => (
+          {pizzaList?.map((product, Index) => (
             <tbody key={Index}>
               <tr className={styles.trTitle}>
                 <td className={styles.tdTitle}>
                   <Image
-                    src={product.img}
+                    src={product?.img}
                     width={50}
                     height={50}
                     objectFit="cover"
                     alt=""
                   />
                 </td>
-                <td className={styles.tdTitle}>{product.title}</td>
-                <td className={styles.tdTitle}>R${product.prices[0]}.00</td>
+                <td className={styles.tdTitle}>{product?.title}</td>
+                <td className={styles.tdTitle}>R${product?.prices[0]}.00</td>
                 <td className={styles.tdTitle} >
-                  <button onClick={() => setIde(product._id)}>
+                  <button onClick={() => setIde(product?._id)}>
                 {<Edit setClose2={setClose2} />}
 
-                  {!close2 && <Editar setClose2={setClose2} pizzaList={pizzaList} extras={product.extraOptions} extras2={product.extraOptions2} products={products} pizzaId={Ide}/>}
+                  {!close2 && <Editar setClose2={setClose2} pizzaList={pizzaList} extras={product?.extraOptions} extras2={product?.extraOptions2} products={products} pizzaId={Ide}/>}
                   </button>
                   </td>
                   <td>
                   <button
                     className={styles.button}
-                    onClick={() => handleDelete(product._id)}
+                    onClick={() => handleDelete(product?._id)}
                   >
                     Delete
                   </button>
@@ -242,7 +246,7 @@ const Index = ({ orders, products }) => {
 
 export const getServerSideProps = async (ctx) => {
   const myCookie = ctx.req?.cookies || "";
-
+ 
   if (myCookie.token !== process.env.TOKEN) {
     return {
       redirect: {
@@ -252,13 +256,11 @@ export const getServerSideProps = async (ctx) => {
     };
   }
 
-  const productRes = await axios.get("http://localhost:3000/api/products");
-  const orderRes = await axios.get("http://localhost:3000/api/orders");
   
   return {
     props: {
-      orders: orderRes.data,
-      products: productRes.data,
+      orderId: 'oi',
+      productId: 'oi',
     },
   };
 };
