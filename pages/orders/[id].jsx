@@ -3,17 +3,22 @@ import Image from "next/image";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import {useRouter} from "next/router";
+import useSwr from 'swr'
 
+const fetcher = (url) => fetch(url).then((res) => res.json())
 
-const Order = ({ order }) => {
-  const status = order.status;
-  
-  console.log(order)
+const Order = ({ orderId }) => {
+
+  const {data: order} = useSwr(`/api/orders/${orderId}`, fetcher)
+  console.log(order);
+
+  const status = order?.status;
+ 
 
   const router = useRouter();
  
   const armazenar = () => {
-    localStorage.setItem("produto", JSON.stringify(order._id));
+    localStorage.setItem("produto", JSON.stringify(order?._id));
   }
   
   useEffect(() => {
@@ -30,7 +35,7 @@ const Order = ({ order }) => {
 
 
 const checked = () => {
-  if(order.metodo == 1) {
+  if(order?.metodo == 1) {
    
     return (<div className={styles.totalTextTitle}>MÉTODO: Cartão de Créd./Deb.</div>)
   }else{
@@ -62,18 +67,18 @@ const checked = () => {
             <tbody>
             <tr className={styles.tr}>
               <td className={styles.address3}>
-                <span className={styles.id}>{order.customer}</span>
+                <span className={styles.id}>{order?.customer}</span>
               </td>
               </tr>
               
               
              
-              {order.produto.map((produto) =>
-              <tr className={styles.tr} key={produto._id}>
+              {order?.produto.map((produto) =>
+              <tr className={styles.tr} key={produto?._id}>
               <td>
                 <div className={styles.imgContainer}>
                   <Image
-                    src={produto.img}
+                    src={produto?.img}
                     alt="oi"
                     width="100%"
                     height="100%"
@@ -81,7 +86,7 @@ const checked = () => {
                 </div>
               </td>
               <td className={styles.name}>
-                <span className={styles.name}>{produto.title} </span>
+                <span className={styles.name}>{produto?.title} </span>
                 {produto.size == 1 && (
   
                   <span className={styles.name}> COM SALADA!</span>
@@ -90,10 +95,10 @@ const checked = () => {
               <td>
                 <span className={styles.extras}>
                   <span></span>
-                  {produto.extras.map((extra) => 
+                  {produto?.extras.map((extra) => 
                     <span key={extra}>{extra}, </span>
                     )}
-                  {produto.refri && <></>}
+                  {produto?.refri && <></>}
                 </span>
               </td>
               <td>
@@ -101,35 +106,35 @@ const checked = () => {
                 <span className={styles.extras}>
                 <span></span>
   
-                  {produto.extras2.map((extra2) => 
+                  {produto?.extras2.map((extra2) => 
                     <span key={extra2}>{extra2}, </span>
                     )}
-                  {produto.refri && <></>}
+                  {produto?.refri && <></>}
                 </span>
               </td>
               <td className={styles.carttd}>
-                <span className={styles.price}>R${produto.price}.00  </span>
-                <div className={styles.quantity}>QTD: {produto.quantity}</div>
+                <span className={styles.price}>R${produto?.price}.00  </span>
+                <div className={styles.quantity}>QTD: {produto?.quantity}</div>
               </td>
               <td className={styles.cartdt}>
-                <span className={styles.price}>R${produto.price}.00</span>
+                <span className={styles.price}>R${produto?.price}.00</span>
               </td>
               <td className={styles.cartdt}>
-                <span className={styles.quantity}>{produto.quantity}</span>
+                <span className={styles.quantity}>{produto?.quantity}</span>
               </td>
               <td>
-                <span className={styles.total}>R${produto.price * produto.quantity}.00</span>
+                <span className={styles.total}>R${produto?.price * produto?.quantity}.00</span>
               </td>
             </tr>
               )}
               <tr className={styles.tr}>
 
               <td className={styles.address3}>
-                <span className={styles.id3}>{order.address}</span>
+                <span className={styles.id3}>{order?.address}</span>
               </td>
               <td className={styles.address3}>
                 
-                <span className={styles.id2}>{order.obs}</span>
+                <span className={styles.id2}>{order?.obs}</span>
               </td>
               </tr>
               </tbody>
@@ -198,16 +203,16 @@ const checked = () => {
             {checked()}
           </div>
           <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>SUBTOTAL:</b>R${order.total}.00
+            <b className={styles.totalTextTitle}>SUBTOTAL:</b>R${order?.total}.00
           </div>
           <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>ENTREGA:</b>R${order.price}.00
+            <b className={styles.totalTextTitle}>ENTREGA:</b>R${order?.price}.00
           </div>
           <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>TROCO PARA:</b>R${order.troco}.00
+            <b className={styles.totalTextTitle}>TROCO PARA:</b>R${order?.troco}.00
           </div>
           <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>TOTAL:</b>R${order.total + order.price}.00
+            <b className={styles.totalTextTitle}>TOTAL:</b>R${order?.total + order?.price}.00
           </div>
           <button disabled className={styles.button}>
             PEDIDO RECEBIDO!
@@ -220,9 +225,9 @@ const checked = () => {
 };
 
 export const getServerSideProps = async ({ params }) => {
-  const res = await axios.get(`http://localhost:3000/api/orders/${params.id}`);
+  
   return {
-    props: { order: res.data },
+    props: {orderId: params.id},
   };
 };
 

@@ -11,7 +11,7 @@ const fetcher = (url) => fetch(url).then((res) => res.json())
 
 const Product = ( {productId}) => {
   const {data: pizza} = useSwr(`/api/products/${productId}`, fetcher)
-  console.log(pizza);
+ 
   const [price, setPrice] = useState(0);
   const [size, setSize] = useState(0);
   const [qtd, setQtd] = useState(1);
@@ -20,7 +20,7 @@ const Product = ( {productId}) => {
   const [extras, setExtras] = useState([]);
   const [extras2, setExtras2] = useState([]);
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     if(!pizza) return;
     setPrice(pizza.prices[0]);

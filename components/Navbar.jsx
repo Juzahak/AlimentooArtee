@@ -11,6 +11,8 @@ const Navbar = () => {
   const quantity = useSelector((state) => state.cart.quantity);
   
   useEffect(() => {
+    
+    return
     let data = JSON.parse(localStorage.getItem("produto"));
     
     setData(data);
