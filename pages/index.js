@@ -11,7 +11,7 @@ import useSwr from 'swr'
 
 const fetcher = (url) => fetch(url).then((res) => res.json())
 
-export const getServerSideProps = async (ctx) => {
+export const  getServerSideProps = async (ctx) => {
   const myCookie = ctx.req?.cookies || "";
   let admin = false;
 
