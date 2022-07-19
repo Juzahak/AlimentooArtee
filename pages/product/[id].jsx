@@ -20,6 +20,7 @@ const Product = ( {productId}) => {
   const [extras, setExtras] = useState([]);
   const [extras2, setExtras2] = useState([]);
   const dispatch = useDispatch();
+  
   useEffect(() => {
     if(!pizza) return;
     setPrice(pizza.prices[0]);
