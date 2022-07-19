@@ -12,10 +12,7 @@ const Navbar = () => {
   
   useEffect(() => {
     
-    
-    let data = JSON.parse(localStorage.getItem("produto"));
-    
-    setData(data);
+    setData(JSON.parse(localStorage.getItem("produto")));
     return;
     
   }, []);

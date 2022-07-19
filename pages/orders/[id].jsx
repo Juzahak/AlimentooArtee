@@ -18,6 +18,7 @@ const Order = ({ orderId }) => {
   const router = useRouter();
  
   const armazenar = () => {
+    localStorage.removeItem("produto");
     localStorage.setItem("produto", JSON.stringify(order?._id));
   }
   
