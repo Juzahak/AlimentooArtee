@@ -63,7 +63,7 @@ const Index = () => {
   };
 
   const handleStatus = async (id) => {
-    const item = orderList.filter((order) => order._id === id)[0];
+    const item = orders.filter((order) => order._id === id)[0];
     const currentStatus = item.status;
 
     try {
