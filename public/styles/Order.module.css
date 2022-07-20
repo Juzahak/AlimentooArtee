@@ -221,16 +221,19 @@ text-align: center;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin-left: 0px;
+    margin-left: -40px;
   }
 
   .done,
   .undone,
   .inProgress {
     margin-bottom: 20px;
+    margin-left: 20px;
   }
 
   .wrapper{
     width: 100%;
   }
+
+
 }

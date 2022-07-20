@@ -146,7 +146,7 @@ const Cart = () => {
       </div>
       <div className={styles.right}>
         <div className={styles.wrapper}>
-          <h2 className={styles.title}>Cesta de Compras</h2>
+          <h3 className={styles.title}>Cesta de Compras</h3>
           <div className={styles.totalText}>
             <span className={styles.totalTextTitle}>SUBTOTAL:</span>R${cart.total}.00
           </div>
