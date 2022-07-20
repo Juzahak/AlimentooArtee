@@ -10,17 +10,15 @@ import Editar from "../../components/Editar";
 import Print from "../../components/Print";
 import Printss from "../../components/Printss";
 import PizzaList from "../../components/PizzaList";
-import useSwr from 'swr'
+import useSwr, {mutate} from 'swr'
 
 const fetcher = (url) => fetch(url).then((res) => res.json())
 
 
 
 const Index = () => {
-  const {data: orders} =  useSwr(`/api/orders`, fetcher);
+  const {data: orders} =  useSwr(`/api/orders`, fetcher, {refreshInterval:5000});
   const {data: products} =  useSwr(`/api/products`, fetcher);
-  const [pizzaList, setPizzaList] = useState();
-  const [orderList, setOrderList] = useState();
   const [close, setClose] = useState(true);
   const [close2, setClose2] = useState(true); 
   const [close3, setClose3] = useState(true);
@@ -35,28 +33,17 @@ const Index = () => {
   const status = ["Preparando", "A Caminho!", "Entregue!"];
  
 
-    useEffect(() => {
-      setPizzaList(products);
-      setOrderList(orders);
-    })
+
 
     
-    setInterval(function() {
-      if(orders !== orderList) {
-        setPizzaList(products);
-        setOrderList(orders);
-
-      }
-      
-    }, 15000);
-
+    
   const handleDelete = async (id) => {
     console.log(id);
     try {
       const res = await axios.delete(
         `/api/products/${id}`
       );
-      setPizzaList(products);
+      mutate(`/api/products`);
     } catch (err) {
       console.log(err);
     }
@@ -70,7 +57,9 @@ const Index = () => {
       const res = await axios.put("/api/orders/" + id, {
         status: currentStatus + 1,
       });
-      setOrderList(orders);
+      mutate(`/api/orders`);
+
+      
     } catch (err) {
       console.log(err);
     }
@@ -89,7 +78,7 @@ const Index = () => {
           <h1 className={styles.title}>PEDIDOS</h1>
           {<Finalizados setClose={setClose} />}
 
-          {!close && <Finalizado setClose={setClose} orders={orderList} />}
+          {!close && <Finalizado setClose={setClose} orders={orders} />}
         </div>
         <table className={styles.table}>
           <tbody>
@@ -105,7 +94,7 @@ const Index = () => {
             </tr>
           </tbody>
 
-          {orderList?.map((order, Index) => (
+          {orders?.map((order, Index) => (
             order.status == 3 ?
               <tfoot key={Index}></tfoot>
 
@@ -178,7 +167,7 @@ const Index = () => {
                   <button onClick={() => setIde(order?._id)} className={styles.impressao2}>
                 {<Print setClose3={setClose3} />}
 
-                  {!close3 && <Printss className={styles.impressao} setClose3={setClose3} order={orderList} orderId={Ide}/>}
+                  {!close3 && <Printss className={styles.impressao} setClose3={setClose3} order={orders} orderId={Ide}/>}
                   </button>
 
                   </td>

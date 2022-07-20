@@ -136,7 +136,7 @@ const Cart = () => {
               <span className={styles.total}>R${product.price * product.quantity}.00</span>
             </td>
             <td>
-                  <button className={styles.removebtn} onClick={() => {dispatch(removeProduct(product._id))}}>REMOVER</button>
+                  <button className={styles.removebtn} onClick={() => {dispatch(removeProduct(product))}}>REMOVER</button>
                 </td>
           </tr>
           ))}

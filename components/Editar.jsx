@@ -1,10 +1,7 @@
 import { useState } from "react";
 import styles from "../public/styles/Editar.module.css";
 import axios from "axios";
-import { useRouter } from "next/router";
-import mongoose from "mongoose";
-import ReactDOM from 'react-dom'
-
+import useSwr, {mutate} from 'swr'
 
 
 const Editar = ({ setClose2, pizzaId, products, extras, extras2 }) => {
@@ -20,8 +17,7 @@ const Editar = ({ setClose2, pizzaId, products, extras, extras2 }) => {
 
   const [ide, setId] = useState(pizzaId);
 
-  console.log(extra)
-  console.log(extra2)
+ 
 
 
   
@@ -42,10 +38,8 @@ const Editar = ({ setClose2, pizzaId, products, extras, extras2 }) => {
         extraOptions2: extraOptions2,
         desc: desc,
       });
-      setPizzaList([
-        res.data,
-        ...pizzaList.filter((pizza) => pizza._id !== id),
-      ]);
+      mutate(`/api/products`);
+      location.reload()
     } catch (err) {
       console.log(err);
     }
@@ -74,11 +68,6 @@ const Editar = ({ setClose2, pizzaId, products, extras, extras2 }) => {
   const handleExtra2 = (e) => {
     setExtraOptions2((prev) => [...prev, extra2]);
   };
-
-  const tiraExtra = (id) => {
-    setExtra(...extra => extra.filter((i) => i._id == id))
-    console.log("toaqui")
-  }
 
   return (
     <div className={styles.container}>

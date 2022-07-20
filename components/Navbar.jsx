@@ -14,13 +14,13 @@ const Navbar = () => {
     
   
     let data = JSON.parse( localStorage.getItem('produto'));
-    
+    console.log(data)
     setData(data);
     return;
     
   }, []);
 
-const pedidinho = `/orders/${data}`;
+const pedidinho = data? `/orders/${data}` : `/orderCheck`;
 
 
 
@@ -78,10 +78,12 @@ const pedidinho = `/orders/${data}`;
             
           <Image src="/img/ALimentoeArtelogo.png" alt="" width="600px" height="170px"/>
           </div>
+          
           <Link href={pedidinho} passHref >
             
           <div className={styles.menus} >Pedido</div>    
           </Link>
+
         </ul>
       </div>
       {teste()}
