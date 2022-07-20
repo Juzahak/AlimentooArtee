@@ -40,9 +40,15 @@ const Index = () => {
       setOrderList(orders);
     })
 
- 
-  
+    
+    setInterval(function() {
+      if(orders !== orderList) {
+        setPizzaList(products);
+        setOrderList(orders);
 
+      }
+      
+    }, 15000);
 
   const handleDelete = async (id) => {
     console.log(id);
