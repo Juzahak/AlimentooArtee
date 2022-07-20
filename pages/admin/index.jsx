@@ -76,9 +76,7 @@ const Index = () => {
 
   return (
     
-        loading ?
-          <></>
-          :
+        
 
           
           <div className={styles.container}>
