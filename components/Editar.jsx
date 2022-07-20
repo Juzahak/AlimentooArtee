@@ -35,7 +35,7 @@ const Editar = ({ setClose2, pizzaId, products, extras, extras2 }) => {
  }else{
 
     try {
-      const res = await axios.put("http://localhost:3000/api/products/" + id, {
+      const res = await axios.put(`/api/products/${id}`, {
         title: nomePrato,
         prices: prices,
         extraOptions: extraOptions,

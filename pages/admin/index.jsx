@@ -48,7 +48,7 @@ const Index = () => {
     console.log(id);
     try {
       const res = await axios.delete(
-        "/api/products/" + id
+        `/api/products/${id}`
       );
       setPizzaList(pizzaList.filter((pizza) => pizza._id !== id));
     } catch (err) {
