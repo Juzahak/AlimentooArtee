@@ -56,7 +56,7 @@ const Index = () => {
       const res = await axios.delete(
         `/api/products/${id}`
       );
-      setPizzaList(pizzaList.filter((pizza) => pizza._id !== id));
+      setPizzaList(products);
     } catch (err) {
       console.log(err);
     }
@@ -70,10 +70,7 @@ const Index = () => {
       const res = await axios.put("/api/orders/" + id, {
         status: currentStatus + 1,
       });
-      setOrderList([
-        res.data,
-        ...orderList.filter((order) => order._id !== id),
-      ]);
+      setOrderList(orders);
     } catch (err) {
       console.log(err);
     }
