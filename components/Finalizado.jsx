@@ -13,7 +13,7 @@ const Finalizado = ({ setClose, orders }) => {
     
     try {
       const res = await axios.delete(
-        "http://localhost:3000/api/orders/" + id
+        "/api/orders/" + id
       );
       setOrderList(orderList.filter((pizza) => pizza._id !== id));
     } catch (err) {

@@ -16,42 +16,32 @@ const fetcher = (url) => fetch(url).then((res) => res.json())
 
 
 
-const Index = ({ orderId, productId }) => {
-  const {data: orders} = useSwr(`/api/orders/`, fetcher)
-  const {data: products} = useSwr(`/api/products/`, fetcher)
-  const [pizzaList, setPizzaList] = useState(products);
-  const [orderList, setOrderList] = useState(orders);
+const Index = () => {
+  const {data: orders} =  useSwr(`/api/orders`, fetcher);
+  const {data: products} =  useSwr(`/api/products`, fetcher);
+  const [pizzaList, setPizzaList] = useState();
+  const [orderList, setOrderList] = useState();
   const [close, setClose] = useState(true);
-  const [close2, setClose2] = useState(true);
+  const [close2, setClose2] = useState(true); 
   const [close3, setClose3] = useState(true);
   const [Ide, setIde] = useState("");
+  const [loading, setLoading] = useState(false);
 
+ 
+   
+    
+ 
 
   const status = ["Preparando", "A Caminho!", "Entregue!"];
  
 
-    console.log(orders);
+    useEffect(() => {
+      setPizzaList(products);
+      setOrderList(orders);
+    })
 
  
   
-  const getServerSide = async (ctx) => {
-  
-  
-    const orderRes = await axios.get("/api/orders");
-    var pedidos = orderRes.data;
-    
-    
-    if(pedidos.length !== orderList.length){
-      location.reload()
-    }else{
-      return
-    }
-    };
-
-    setInterval(function() {
-      getServerSide()
-      
-    }, 5000);
 
 
   const handleDelete = async (id) => {
@@ -85,8 +75,13 @@ const Index = ({ orderId, productId }) => {
   
 
   return (
-    <div className={styles.container}>
-      
+    
+        loading ?
+          <></>
+          :
+
+          
+          <div className={styles.container}>
       
       <div className={styles.item}>
         <div className={styles.alinhado}>
@@ -204,7 +199,7 @@ const Index = ({ orderId, productId }) => {
               <th>EXCLUIR</th>
             </tr>
           </tbody>
-          {pizzaList?.map((product, Index) => (
+          {products?.map((product, Index) => (
             <tbody key={Index}>
               <tr className={styles.trTitle}>
                 <td className={styles.tdTitle}>
@@ -256,11 +251,10 @@ export const getServerSideProps = async (ctx) => {
     };
   }
 
-  
+
   return {
     props: {
-      orderId: 'oi',
-      productId: 'oi',
+      
     },
   };
 };
