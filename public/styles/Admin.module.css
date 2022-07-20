@@ -74,6 +74,8 @@
 
 .statinho{
   margin-top: 25px;
+  width: 83px;
+    font-size: 15px;
 }
 
 .proximo {
@@ -243,12 +245,12 @@ margin-top:10px;
   padding-top: 27px;
     align-items: center;
     height: 81px;
-    
+    font-size: 15px;
     border: 1px solid black;
 }
 
 .span2Title {
-  
+  font-size: 15px;
   padding-top: 21px;
   align-items: center;
   height: 81px;
