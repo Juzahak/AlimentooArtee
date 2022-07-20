@@ -215,7 +215,7 @@ const Index = () => {
                   <button onClick={() => setIde(product?._id)}>
                 {<Edit setClose2={setClose2} />}
 
-                  {!close2 && <Editar setClose2={setClose2} pizzaList={pizzaList} extras={product?.extraOptions} extras2={product?.extraOptions2} products={products} pizzaId={Ide}/>}
+                  {!close2 && <Editar setClose2={setClose2} pizzaList={products} extras={product?.extraOptions} extras2={product?.extraOptions2} products={products} pizzaId={Ide}/>}
                   </button>
                   </td>
                   <td>

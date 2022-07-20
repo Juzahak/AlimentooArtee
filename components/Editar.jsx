@@ -27,7 +27,7 @@ const Editar = ({ setClose2, pizzaId, products, extras, extras2 }) => {
   
 
   const handleUpdate = async (id) => {
-    const item = pizzaList.filter((pizza) => pizza._id === id);
+    const item = products.filter((pizza) => pizza._id === id);
 
  if(nomePrato == "" || prices == "" || desc == ""){
   alert("preencha os campos corretamente")
@@ -263,27 +263,5 @@ const Editar = ({ setClose2, pizzaId, products, extras, extras2 }) => {
 
 };
 
-export const getServerSideProps = async (ctx) => {
-  const myCookie = ctx.req?.cookies || "";
-
-  if (myCookie.token !== process.env.TOKEN) {
-    return {
-      redirect: {
-        destination: "/admin/login",
-        permanent: false,
-      },
-    };
-  }
-
-  const productRes = await axios.get("http://localhost:3000/api/products");
-  const orderRes = await axios.get("http://localhost:3000/api/orders");
-
-  return {
-    props: {
-      orders: orderRes.data,
-      products: productRes.data,
-    },
-  };
-};
 
 export default Editar
