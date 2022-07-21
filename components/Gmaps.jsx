@@ -6,7 +6,7 @@ import styles from "../public/styles/Footer.module.css";
 export default function Gmaps() {
     
 
-    const { isLoaded } = useLoadScript({ googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY, });
+    const { isLoaded } = useLoadScript({ googleMapsApiKey: "AIzaSyAjctI88nX5zQ-ft9cN_GBWR1Qr7UIHtUU", });
 
     if(!isLoaded) return <div>Carregando...</div>;
 
