@@ -171,6 +171,7 @@ text-align: center;
 @media screen and (max-width: 480px) {
   .container {
     flex-direction: column;
+    padding: 0;
   }
 
   .trTitle {
@@ -233,8 +234,8 @@ text-align: center;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin-left: -40px;
-  }
+    margin-left: -10px;
+    }
 
   .done,
   .undone,
