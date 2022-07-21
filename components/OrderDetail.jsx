@@ -57,7 +57,7 @@ const OrderDetail = ({ total, createOrder, produto, setCash, price, metodo, sele
           <input
             type="text"
             placeholder="INTEIRO 50, 60..."
-            className={styles.input}
+            className={styles.input2}
             onChange={(e) => setTroco(e.target.value)}
           />
           <div className={styles.spancents}>,00</div>

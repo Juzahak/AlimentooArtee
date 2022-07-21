@@ -62,6 +62,12 @@
 
 .input {
   height: 40px;
+
+  font-size: 20px;
+}
+.input2 {
+  height: 40px;
+  width: 80%;
   font-size: 20px;
 }
 
@@ -98,7 +104,7 @@
   }
   .spancents{
     padding: 6px 20px 6px 5px;
-    
+    width: 20%;
   }
   .close{
     
