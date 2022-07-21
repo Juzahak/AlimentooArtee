@@ -60,7 +60,7 @@ const OrderDetail = ({ total, createOrder, produto, setCash, price, metodo, sele
             className={styles.input}
             onChange={(e) => setTroco(e.target.value)}
           />
-          <span className={styles.spancents}>,00</span>
+          <div className={styles.spancents}>,00</div>
           </div>
         </div>
         )}
