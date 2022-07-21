@@ -53,10 +53,10 @@ const OrderDetail = ({ total, createOrder, produto, setCash, price, metodo, sele
         {!metodo && (
         <div className={styles.item}>
           <label className={styles.label}>Precisa de troco?</label>
-          <div>
+          <div className={styles.troquinho}>
           <input
             type="text"
-            placeholder="TROCO PARA 50, 100, ..."
+            placeholder="INTEIRO 50, 60..."
             className={styles.input}
             onChange={(e) => setTroco(e.target.value)}
           />

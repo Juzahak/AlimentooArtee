@@ -88,7 +88,18 @@
     height: 160vh;
   }
 
-  
+  .troquinho{
+    display: flex;
+    align-items: center;
+    
+  }
+  .wrapper{
+    width: 100vw;
+  }
+  .spancents{
+    padding: 5px 20px 5px 5px;
+
+  }
   .close{
     
     top: -45px;
