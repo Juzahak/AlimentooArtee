@@ -7,6 +7,9 @@ import {addProduct} from '../../redux/cartSlice';
 import Link from "next/link";
 import useSwr from 'swr'
 
+
+
+
 const fetcher = (url) => fetch(url).then((res) => res.json())
 
 const Product = ( {productId}) => {
@@ -122,9 +125,11 @@ const Product = ( {productId}) => {
 
   const handleClick = () => {
     if(qtd >= 1 && qtd2 >= 2) {
+      alert('Item adicionado com sucesso');
     dispatch(addProduct({...pizza, extras, extras2, price, quantity, size}));
   }
   if(pizza.refri == true) {
+    alert('Item adicionado com sucesso');
     dispatch(addProduct({...pizza, extras, extras2, price, quantity, size}));
   }
   if(qtd <= 1 && qtd2 <= 2){
@@ -234,7 +239,7 @@ const Product = ( {productId}) => {
         <div className={styles.add}>
             <input onChange={(e) => setQuantity(e.target.value)} type="number" defaultValue={1} className={styles.quantity}/>
             
-            <Link href="/cart" passHref >
+            <Link href="/" passHref >
             <button className={styles.button} onClick={handleClick}>ADICIONAR</button>
             </Link>
             

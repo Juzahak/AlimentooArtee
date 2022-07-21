@@ -19,7 +19,15 @@ const Order = ({ orderId }) => {
   const router = useRouter();
  
   
-  
+  useEffect(() => {
+    
+  if(status === 3) {
+    let data = localStorage.removeItem('produto');
+    console.log(data)
+   
+    return;
+  }
+  }, []);
   
  
  

@@ -128,6 +128,18 @@ text-align: center;
  
 }
 
+.checkcheck{
+  width: 100%;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    font-family: 'Quicken';
+    display: flex;
+    height: 100%;
+
+    font-size: 50px;
+    justify-content: center;
+}
+
 .wrapper {
   margin-top: 30px;
   max-height: 300px;

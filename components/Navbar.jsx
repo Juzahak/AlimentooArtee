@@ -5,11 +5,12 @@ import {useState, useEffect} from "react";
 import Link from "next/link";
 
 
-
 const Navbar = () => {
   const [data, setData] = useState();
   const quantity = useSelector((state) => state.cart.quantity);
   
+
+
   useEffect(() => {
     
   
@@ -25,9 +26,11 @@ const pedidinho = data? `/orders/${data}` : `/orderCheck`;
 
 
   const teste = () => {
+   
     if(quantity > 0) {
       
-      return ( <Link href="/cart" passHref>
+
+      return ( <Link href="/cart" passHref>    
       <div className={styles.item}>
         <div className={styles.cart}>
           <Image src="/img/cestinha.png" alt="" width="70px" height="70px" />
