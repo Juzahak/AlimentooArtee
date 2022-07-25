@@ -77,6 +77,10 @@
     font-size: 15px;
 }
 
+.checkkk{
+  width: 22px;
+    height: 22px;
+}
 .proximo {
   margin-bottom: 25px;
   border: 1;
@@ -182,12 +186,12 @@ border: 1;
 
 .td2Title {
 
-  width: 430px;
+  width: 400px;
 }
 
 .tdtTitle {
   
-  width: 5%;
+  width: 10%;
 }
 .tdt2Title {
   
@@ -234,7 +238,7 @@ margin-top:10px;
 
 .spanTitle {
   padding-top: 27px;
-
+  padding-left: 5px;
   height: 81px;
   text-align: left;
   border: 1px solid black;

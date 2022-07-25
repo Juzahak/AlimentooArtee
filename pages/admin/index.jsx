@@ -27,7 +27,7 @@ const Index = () => {
 
  
    
-    
+    console.log(orders)
  
 
   const status = ["Preparando", "A Caminho!", "Entregue!"];
@@ -107,6 +107,7 @@ const Index = () => {
                 <tr className={styles.trTitle}>
                   <td className={styles.tdtTitle}>{order?.customer},
                     <div className={styles.tdt2Title}>{order?.select}</div>
+                    <div className={styles.tdt2Title}>{order?.telefone}</div>
                   </td>
                   <td className={styles.tdTitle}>
                     {order?.produto.map((sla, Index) =>
@@ -166,7 +167,7 @@ const Index = () => {
                   <td className={styles.tdTitle}>
                   <button onClick={() => setIde(order?._id)} className={styles.impressao2}>
                 {<Print setClose3={setClose3} />}
-
+                      <input type='checkbox' className={styles.checkkk}></input>
                   {!close3 && <Printss className={styles.impressao} setClose3={setClose3} order={orders} orderId={Ide}/>}
                   </button>
 

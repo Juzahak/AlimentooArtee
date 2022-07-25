@@ -86,10 +86,11 @@ const Editar = ({ setClose2, pizzaId, products, extras, extras2 }) => {
                 <h2 className={styles.label}>Nome</h2>
                 <input
                   type="text"
-                  
+                  className={styles.vames}
                   placeholder={produto.title}
                   onChange={(e) => setNomePrato(e.target.value)}
                 />
+                
               </div>
               <div className={styles.item}>
                 <label className={styles.label}>Valores</label>
@@ -235,7 +236,7 @@ const Editar = ({ setClose2, pizzaId, products, extras, extras2 }) => {
               </div>
 
         <div className={styles.button} onClick={() => handleUpdate(produto._id)}>
-          ENVIAR PEDIDO
+          EDITAR ITEM
         </div>
             </div>
             :

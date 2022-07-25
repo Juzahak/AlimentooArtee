@@ -12,6 +12,11 @@ const OrderSchema = new mongoose.Schema(
       required: true,
       maxlength: 200,
     },
+    telefone: {
+      type: String,
+      required: true,
+      maxlength: 60,
+    },
     obs: {
       type: String,
       maxlength: 200,

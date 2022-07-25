@@ -8,6 +8,7 @@ const OrderDetail = ({ total, createOrder, produto, setCash, price, metodo, sele
   const [address, setAddress] = useState("");
   const [troco, setTroco] = useState("");
   const [obs, setObs] = useState("");
+  const [telefone, setTelefone] = useState("");
   
 
   
@@ -18,7 +19,7 @@ const OrderDetail = ({ total, createOrder, produto, setCash, price, metodo, sele
   const handleClick = () => {
 
 
-    createOrder({ customer, troco, address, total, produto, price, select, obs, metodo });
+    createOrder({ customer, troco, address, total, produto, price, select, obs, metodo, telefone });
     
   };
 
@@ -48,6 +49,7 @@ const OrderDetail = ({ total, createOrder, produto, setCash, price, metodo, sele
             type="text"
             placeholder="(XX) XXXXX-XXXX"
             className={styles.input}
+            onChange={(e) => setTelefone(e.target.value)}
           />
         </div>
         {!metodo && (

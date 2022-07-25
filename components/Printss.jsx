@@ -28,15 +28,16 @@ const Printss = ({ setClose3, order, orderId }) => {
             <div className={styles.position25}>Alimento e Arte</div>
             <div className={styles.position}>Dia: {pedidos.createdAt.slice(0, 10)} </div>
             <div className={styles.position}>Hora: {pedidos.createdAt.slice(11, 16)}</div>
-            <div className={styles.position}>=================</div>
+            <div className={styles.position}>====================</div>
             <div className={styles.position4}>-Cliente-</div>
-            <div className={styles.position}>{pedidos.customer}</div>
-            <div className={styles.position}>=================</div>
+            <div className={styles.position4}>{pedidos.customer}</div>
+            <div className={styles.position4}>{pedidos.telefone}</div>
+            <div className={styles.position}>====================</div>
 
             <div className={styles.position4}>{pedidos.address}</div>
             <div className={styles.position4}>{pedidos.select}</div>
             <div className={styles.position4}>OBS:  {pedidos.obs}</div>
-            <div className={styles.position}>=================</div>
+            <div className={styles.position}>====================</div>
             <div className={styles.position2}>-Pedido-</div>
             {pedidos.produto.map((produtos, Index) => (
                 <div key={Index}>
@@ -51,7 +52,7 @@ const Printss = ({ setClose3, order, orderId }) => {
                     {produtos.extras2.map((extras2, Index) => 
                         <div className={styles.position} key={Index}>-{extras2}</div>
                     )}
-            <div className={styles.position}>=================</div>
+            <div className={styles.position}>====================</div>
             </div>
                 
                 
