@@ -32,7 +32,7 @@ export default function Home({admin}) {
   const [close, setClose] = useState(true);
   const {data: pizzaList} = useSwr("/api/products", fetcher)
   console.log(pizzaList);
-  if(admin === true){
+  if(admin === false){
     return (
       <div className={styles.container}>
         <Head>
