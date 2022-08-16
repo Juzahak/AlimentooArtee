@@ -2,12 +2,15 @@ import { useState } from "react";
 import styles from "../public/styles/Add.module.css";
 import axios from "axios";
 import { useRouter } from "next/router";
-
+import useSwr, {mutate} from 'swr'
 
 
 const Add = ({ setClose }) => {
   const [file, setFile] = useState(null);
   const [title, setTitle] = useState(null);
+  const [list, setList] = useState(null);
+  
+  
   const [desc, setDesc] = useState(null);
   const [prices, setPrices] = useState([]);
   const [extraOptions, setExtraOptions] = useState([]);
@@ -17,10 +20,10 @@ const Add = ({ setClose }) => {
   const [extra2, setExtra2] = useState(null);
   const [refri, setRefri] = useState(false);
 
+  const fetcher = (url) => fetch(url).then((res) => res.json())
   
-  
-  
-  console.log(refri)
+  const {data: lista} = useSwr("/api/lists", fetcher);
+ 
 
   const changePrice = (e, index) => {
     const currentPrices = prices;
@@ -73,8 +76,25 @@ const Add = ({ setClose }) => {
       console.log(err);
     }
   };
+  
+  const handleCreateList = async () => {
+    
+    try {
+      const newProduct = {
+        list,
+      };
 
+      await axios.post("/api/lists", newProduct);
+      setClose(true);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+ 
+  console.log(lista)
   return (
+    
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <span onClick={() => setClose(true)} className={styles.close}>
@@ -85,6 +105,25 @@ const Add = ({ setClose }) => {
           <label className={styles.label}>Escolha uma imagem</label>
           <input type="file" onChange={(e) => setFile(e.target.files[0])} />
         </div>
+
+        <div>
+          <input 
+          className={styles.input}
+          type="text"
+          onChange={(e) => setList(e.target.value)}
+          />
+          <button className={styles.extraButton} onClick={handleCreateList}/>
+        </div>
+        
+        {lista.map((listt) =>
+                      <div key={list}>
+                       {listt.list}
+
+                      </div>
+                    )}
+
+
+
         <div className={styles.bebida}>Bebida/outro
           <input type="checkbox" 
           className={styles.inputinho} 
