@@ -18,6 +18,15 @@
   transition: all 0.5s ease-in-out ;
 }
 
+.listcontainer{
+  display: flex;
+    justify-content: space-evenly;
+    font-size: 20px;
+    font-family: sans-serif;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
   .bebida {
     text-align: center;
     font-size: 25px;
@@ -25,7 +34,23 @@
     margin-top: 15px;
   }
 
-  
+  .extraButton5 {
+    margin-left: 25px;
+    background: lightgreen;
+    color: gray;
+    border-color: rgb(0 0 0 / 0%);
+    border-radius: 10px;
+  }
+  .extraButton5:hover {
+    transition: all 0.5s ease;
+    background: green;
+    color: rgb(255, 255, 255);
+    border-color: rgb(255, 255, 255);
+    border-radius: 10px;
+  }
+  .extraButton4 {
+    margin-bottom: 20px;
+  }
 
   .inputinho {
     width: 20px;

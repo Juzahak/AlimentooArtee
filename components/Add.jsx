@@ -1,29 +1,46 @@
-import { useState } from "react";
+import { useEffect, useState, } from "react";
 import styles from "../public/styles/Add.module.css";
 import axios from "axios";
 import { useRouter } from "next/router";
 import useSwr, {mutate} from 'swr'
 
 
-const Add = ({ setClose }) => {
+const Add = ({ setClose, lista }) => {
   const [file, setFile] = useState(null);
   const [title, setTitle] = useState(null);
   const [list, setList] = useState(null);
+  const [listName, setName] = useState("");
   
   
   const [desc, setDesc] = useState(null);
   const [prices, setPrices] = useState([]);
   const [extraOptions, setExtraOptions] = useState([]);
   const [extraOptions2, setExtraOptions2] = useState([]);
+  const [qtd, setQtd] = useState(0);
   
   const [extra, setExtra] = useState(null);
   const [extra2, setExtra2] = useState(null);
   const [refri, setRefri] = useState(false);
 
-  const fetcher = (url) => fetch(url).then((res) => res.json())
-  
-  const {data: lista} = useSwr("/api/lists", fetcher);
- 
+  const atualizar = (e, listt) => {
+    const checked = e.target.checked;
+
+
+    if(checked && qtd === 1) {
+      alert("Escolha apenas uma lista!")
+      e.target.checked = false;
+    }
+    if(checked && qtd === 0) {
+      setQtd(qtd + 1);
+      setName(listt.list);
+      
+    }
+    if(checked === false){
+      setQtd(qtd - 1);
+      setName("");
+    }
+  }
+
 
   const changePrice = (e, index) => {
     const currentPrices = prices;
@@ -63,6 +80,7 @@ const Add = ({ setClose }) => {
       const newProduct = {
         title,
         desc,
+        listName,
         prices,
         refri,
         extraOptions,
@@ -92,7 +110,8 @@ const Add = ({ setClose }) => {
   };
 
  
-  console.log(lista)
+  console.log(listName)
+  console.log(qtd)
   return (
     
     <div className={styles.container}>
@@ -106,25 +125,11 @@ const Add = ({ setClose }) => {
           <input type="file" onChange={(e) => setFile(e.target.files[0])} />
         </div>
 
-        <div>
-          <input 
-          className={styles.input}
-          type="text"
-          onChange={(e) => setList(e.target.value)}
-          />
-          <button className={styles.extraButton} onClick={handleCreateList}/>
-        </div>
+       
         
-        {lista.map((listt) =>
-                      <div key={list}>
-                       {listt.list}
+    
 
-                      </div>
-                    )}
-
-
-
-        <div className={styles.bebida}>Bebida/outro
+        <div className={styles.bebida}>Sub-Menu
           <input type="checkbox" 
           className={styles.inputinho} 
           checked={refri} 
@@ -134,6 +139,37 @@ const Add = ({ setClose }) => {
 
           </input>
         </div>
+    {refri ? 
+        <div className={styles.extraButton4}>
+          <input 
+          className={styles.input}
+          type="text"
+          onChange={(e) => setList(e.target.value)}
+          />
+          <button className={styles.extraButton5} onClick={handleCreateList}>ADD LIST</button>
+        </div>
+        :
+        <></>
+        }
+        <div className={styles.listcontainer}>
+          
+        {lista.map((listt) =>
+        refri ?
+                       <div key={listt.list} className={styles.listcontainer}>{listt.list}
+                       <input type="checkbox" 
+                       className={styles.inputinho} 
+                      
+                       name="text"
+                       onChange={(e) => atualizar(e, listt)} >
+                      
+             
+                       </input>
+                     </div>
+          :
+          <></>
+                    )}
+
+</div>
         <div className={styles.item}>
           <label className={styles.label}>Nome do Produto</label>
           <input

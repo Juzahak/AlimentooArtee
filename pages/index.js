@@ -30,8 +30,9 @@ export const  getServerSideProps = async (ctx) => {
 
 export default function Home({admin}) {
   const [close, setClose] = useState(true);
-  const {data: pizzaList} = useSwr("/api/products", fetcher)
-  console.log(pizzaList);
+  const {data: pizzaList} = useSwr("/api/products", fetcher);
+  const {data: lista} = useSwr("/api/lists", fetcher);
+  console.log(lista);
   if(admin === false){
     return (
       <div className={styles.container}>
@@ -42,8 +43,8 @@ export default function Home({admin}) {
         </Head>
         <Featured />
         {<AddButton setClose={setClose} />}
-        <PizzaList pizzaList={pizzaList || []} />
-        {!close && <Add setClose={setClose} />}
+        <PizzaList pizzaList={pizzaList || []} lista={lista || []}/>
+        {!close && <Add setClose={setClose} lista={lista || []}/>}
       </div>
     );
   }else{
@@ -56,7 +57,7 @@ export default function Home({admin}) {
         </Head>
         <Featured />
        
-        <PizzaList pizzaList={pizzaList || []} />
+        <PizzaList pizzaList={pizzaList || []} lista={lista || []}/>
         
       </div>
     );
